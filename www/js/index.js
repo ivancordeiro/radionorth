@@ -20,7 +20,7 @@ uuid = device.uuid;
 version =  device.version;
 serial = device.serial;
 
-vr conn = conexao();
+var conn = conexao();
 conexaoMSG(conn);
 
 //pedidos();
