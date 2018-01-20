@@ -10,7 +10,7 @@
         "spec": ">=1.2.0 <1.3.0",
         "type": "range"
       },
-      "C:\\xampp\\htdocs\\mobiles\\radionorth"
+      "C:\\xampp\\htdocs\\mobiles\\TesteFile"
     ]
   ],
   "_from": "cordova-plugin-network-information@>=1.2.0 <1.3.0",
@@ -45,7 +45,7 @@
   "_shasum": "1fd7b72af0662415b955c57638f7b7767c843d98",
   "_shrinkwrap": null,
   "_spec": "cordova-plugin-network-information@~1.2.0",
-  "_where": "C:\\xampp\\htdocs\\mobiles\\radionorth",
+  "_where": "C:\\xampp\\htdocs\\mobiles\\TesteFile",
   "author": {
     "name": "Apache Software Foundation"
   },
