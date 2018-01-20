@@ -217,7 +217,7 @@ alert('chamou funcao dowload');
 
 if( tipo == 'lau' ){
 var arquivoBX = baseUrl + baseLaudos + 'laudo.php?token=' + token ; 
-var arquivoBX2 = 'ped' + idped + '/Laudo_' + arq ;
+var arquivoBX2 = 'ped' + idped + '/Laudo_' + token + '.pdf' ;
 } else {
 var arquivoBX = baseUrl + baseArquivos + arq;
 var arquivoBX2 = 'ped' + idped + '/' + arq ;
