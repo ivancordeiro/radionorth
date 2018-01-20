@@ -183,6 +183,7 @@ function checkConnection() {
 alert('testando conexao:');
 var networkState = navigator.connection.type;
 
+/*
 alert('networkState:' + networkState );
 
 var states = '';
@@ -195,7 +196,11 @@ if( networkState == 'Connection.CELL_3G' ){        states  = 'Cell 3G connection
 if( networkState == 'Connection.CELL' ){        states     = 'Cell generic connection'; }
 if( networkState == 'Connection.NONE' ){        states     = 'No network connection'; }
 
-    alert('Connection type: ' + states );
+ alert('Connection type: ' + states );
+*/
+
+return networkState;
+
 }
 
 

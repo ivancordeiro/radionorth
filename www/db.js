@@ -14,7 +14,18 @@ function onInit(){
            // onAddColuna('teste','VARCHAR ');
            // onUpdateDB( 3, 'joao23', 'daa4s57ree23', 'cli' ); //id, nome, token, tipo 
             //onDeleteDB(2);//id
-            checaLogin();
+
+       var net = checkConnection();
+
+alert('a net e do tipo: ' + net );
+
+if( net == 'Connection.NONE' ){
+alert('O app não encontrou conexao com internet' );
+} else {
+checaLogin();
+}
+            
+
         }
     } 
     catch (e) {
