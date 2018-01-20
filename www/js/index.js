@@ -246,3 +246,9 @@ var arquivoBX2 = 'ped' + idped + '/' + arq ;
 
 
 }
+
+
+
+function fechar(){
+navigator.app.exitApp();
+}
