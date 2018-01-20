@@ -9,13 +9,12 @@ function onInit(){
         }
         else {
             initDB();
-            //createTables();
-            //
-onDeleteTables();
+            createTables();
+            //onDeleteTables();
            // onAddColuna('teste','VARCHAR ');
            // onUpdateDB( 3, 'joao23', 'daa4s57ree23', 'cli' ); //id, nome, token, tipo 
             //onDeleteDB(2);//id
-            //checaLogin();
+            checaLogin();
         }
     } 
     catch (e) {
