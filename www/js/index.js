@@ -177,13 +177,13 @@ ifrBrowser.location.href='embranco.html';
 
 
 
-
+/*
 function checkConnection() {
 
 alert('testando conexao:');
 var networkState = navigator.connection.type;
 
-/*
+
 alert('networkState:' + networkState );
 
 var states = '';
@@ -197,12 +197,12 @@ if( networkState == 'Connection.CELL' ){        states     = 'Cell generic conne
 if( networkState == 'Connection.NONE' ){        states     = 'No network connection'; }
 
  alert('Connection type: ' + states );
-*/
+
 
 return networkState;
 
 }
-
+*/
 
 
 function pedidos(){
