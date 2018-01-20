@@ -1,0 +1,146 @@
+
+
+/*abaixo de 800px*/
+@media only screen and (max-width: 799px) {
+
+
+
+.cabtd1{
+ width:180px; 
+text-align:left;
+padding-left:2px;
+height:45px;
+border-right:1px solid #ccc;
+}
+
+.cabtd2{
+ width:80px; 
+text-align:left;
+padding-left:10px;
+padding-top:10px;
+height:39px;
+font-size:14px; 
+padding-bottom:0px;
+}
+
+
+
+.cabtd3{
+padding:2px;
+padding-top:4px;
+margin-left:0px;
+clear:both;
+border-top:1px solid #ccc;
+text-align:center;
+ width:98%;
+}
+
+.logo_cab{
+width:170px;
+height:auto;
+}
+
+
+
+
+
+
+
+
+
+.logtd{
+padding-left:4px;
+padding-top:20px;
+}
+
+
+.paddpgint{
+padding:5px; padding-top:15px;
+}
+
+
+#gridPed li{
+min-height:50px;
+}
+
+#gridPed .gridPedCel1{
+width:17%; 
+}
+
+#gridPed .gridPedCel2{
+width:60%;  
+}
+
+#gridPed .gridPedCel3{
+width:15%; 
+}
+
+.gridPedServTd{
+padding:2px; 
+}
+
+#divPedTokQr{
+display:none;
+}
+
+.pedlauVis{
+/*display:none;*/
+}
+.gridPedServTd{
+padding-bottom:40px; 
+}
+
+
+.tit {
+font-size: 14px;
+}
+
+.padlat {
+padding-left:4px;
+}
+
+
+
+.lispedBoxPed{
+width:280px; float:left; padding:4px; margin-right:0px;  -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;
+}
+
+
+.lispacBox{
+width:280px; float:left; padding:4px; margin-right:0px;  -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;
+}
+
+
+}
+
+
+
+
+
+
+
+/*320*/
+@media only screen and (max-width: 320px) and (min-width: 300px) {
+
+.divPedServImg{
+width:280px; margin-right:0px;
+}
+
+}
+
+
+
+/*minimo*/
+@media only screen and (max-width: 240px) {
+
+
+.cabtd2{
+ width:80px; 
+}
+
+
+
+}
+
+
+	
