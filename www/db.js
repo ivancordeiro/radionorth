@@ -5,20 +5,24 @@ var localDB = null;
 function onInit(){
     try {
         if (!window.openDatabase) {
-            updateStatus("Erro: Seu navegador não permite banco de dados.");
+            updateStatusDB("Erro: Seu navegador não permite banco de dados.");
         }
         else {
             initDB();
             createTables();
-            queryAndUpdateOverview();
+            //onDeleteTables();
+           // onAddColuna('teste','VARCHAR ');
+           // onUpdateDB( 3, 'joao23', 'daa4s57ree23', 'cli' ); //id, nome, token, tipo 
+            //onDeleteDB(2);//id
+            checaLogin();
         }
     } 
     catch (e) {
         if (e == 2) {
-            updateStatus("Erro: Versão de banco de dados inválida.");
+            updateStatusDB("Erro: Versão de banco de dados inválida.");
         }
         else {
-            updateStatus("Erro: Erro desconhecido: " + e + ".");
+            updateStatusDB("Erro: Erro desconhecido ao criar o banco: " + e + ".");
         }
         return;
     }
@@ -38,16 +42,17 @@ function initDB(){
     localDB = window.openDatabase(shortName, version, displayName, maxSize);
 }
 
+
 function createTables(){
-    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR NOT NULL, token VARCHAR NOT NULL);';
+    var query = 'CREATE TABLE IF NOT EXISTS usuario(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR NOT NULL, token VARCHAR NOT NULL,tipo VARCHAR NOT NULL );';
     try {
         localDB.transaction(function(transaction){
-            transaction.executeSql(query, [], nullDataHandler, errorHandler);
-            updateStatus("Tabela 'usuario' status: OK.");
+            transaction.executeSql(query, [], nullDataHandler, errorHandlerDB);
+           // updateStatusDB("Tabela 'usuario' status: OK.");
         });
     } 
     catch (e) {
-        updateStatus("Erro: Data base 'usuario' não criada " + e + ".");
+        updateStatusDB("Erro: Data base 'usuario' não criada " + e + ".");
         return;
     }
 }
@@ -55,62 +60,82 @@ function createTables(){
 
 
 
-//2. Query e visualização de Update
 
-
-function onUpdate(){
-    var id = document.itemForm.id.value;
-    var nome = document.itemForm.nome.value;
-    var token = document.itemForm.idade.value;
-    if (nome == "" || token == "") {
-        updateStatus("'Nome' e 'Idade' são campos obrigatórios!");
+function onDeleteTables(){
+    var query = 'DROP TABLE IF EXISTS usuario ;';
+    try {
+        localDB.transaction(function(transaction){
+            transaction.executeSql(query, [], nullDataHandler, errorHandlerDB);
+        });
+    } 
+    catch (e) {
+        updateStatusDB("Erro: Data base 'usuario' não criada " + e + ".");
+        return;
     }
-    else {
-        var query = "update usuario set nome=?, token=? where id=?;";
-        try {
-            localDB.transaction(function(transaction){
-                transaction.executeSql(query, [nome, token, id], function(transaction, results){
-                    if (!results.rowsAffected) {
-                        updateStatus("Erro: Update não realizado.");
-                    }
-                    else {
-                        updateForm("", "", "");
-                        updateStatus("Update realizado:" + results.rowsAffected);
-                        queryAndUpdateOverview();
-                    }
-                }, errorHandler);
-            });
-        } 
-        catch (e) {
-            updateStatus("Erro: UPDATE não realizado " + e + ".");
-        }
+}
+
+
+
+function onAddColuna(coluna,tipo){
+    var query = 'ALTER TABLE usuario ADD COLUMN ' + coluna + ' ' + tipo +' ;';
+    try {
+        localDB.transaction(function(transaction){
+            transaction.executeSql(query, [], nullDataHandler, errorHandlerDB);
+        });
+    } 
+    catch (e) {
+        updateStatusDB("Erro: Data base 'usuario' não criada " + e + ".");
+        return;
     }
 }
 
 
 
 
-function onDelete(){
-    var id = document.itemForm.id.value;
+
+function onUpdateDB( id, nome, token, tipo ){
+
+        var query = "update usuario set nome=?, token=?, tipo=? where id=?;";
+        try {
+            localDB.transaction(function(transaction){
+                transaction.executeSql(query, [nome, token, tipo, id], function(transaction, results){
+                    if (!results.rowsAffected) {
+                        updateStatusDB("Erro: Update não realizado.");
+                    }
+                    else {
+                        //updateStatusDB("Update realizado:" + results.rowsAffected);
+                        //checaLogin();
+                    }
+                }, errorHandlerDB);
+            });
+        } 
+        catch (e) {
+            updateStatusDB("Erro: UPDATE não realizado " + e + ".");
+        }
     
+}
+
+
+
+
+function onDeleteDB(id){
     var query = "delete from usuario where id=?;";
     try {
         localDB.transaction(function(transaction){
         
             transaction.executeSql(query, [id], function(transaction, results){
                 if (!results.rowsAffected) {
-                    updateStatus("Erro: Delete não realizado.");
+                    updateStatusDB("Erro: Delete não realizado.");
                 }
                 else {
-                    updateForm("", "", "");
-                    updateStatus("Linhas deletadas:" + results.rowsAffected);
-                    queryAndUpdateOverview();
+                    //updateStatusDB("Linhas deletadas:" + results.rowsAffected);
+                    //checaLogin();
                 }
-            }, errorHandler);
+            }, errorHandlerDB);
         });
     } 
     catch (e) {
-        updateStatus("Erro: DELETE não realizado " + e + ".");
+        updateStatusDB("Erro: DELETE não realizado " + e + ".");
     }
     
 }
@@ -118,58 +143,46 @@ function onDelete(){
 
 
 
-function onCreate(){
-    var nome = document.itemForm.nome.value;
-    var idade = document.itemForm.idade.value;
-    if (nome == "" || idade == "") {
-        updateStatus("Erro: 'Nome' e 'Idade' são campos obrigatórios!");
-    }
-    else {
-        var query = "insert into usuario (nome, token) VALUES (?, ?);";
-        try {
-            localDB.transaction(function(transaction){
-                transaction.executeSql(query, [nome, idade], function(transaction, results){
-                    if (!results.rowsAffected) {
-                        updateStatus("Erro: Inserção não realizada");
-                    }
-                    else {
-                        updateForm("", "", "");
-                        updateStatus("Inserção realizada, linha id: " + results.insertId);
-                        queryAndUpdateOverview();
-                    }
-                }, errorHandler);
-            });
-        } 
-        catch (e) {
-            updateStatus("Erro: INSERT não realizado " + e + ".");
-        }
-    }
-}
-
-
-
-function onSelect(htmlLIElement){
-	var id = htmlLIElement.getAttribute("id");
-	
-	query = "SELECT * FROM usuario where id=?;";
+function onDeleteGeralDB(){
+    var query = "delete from usuario ;";
     try {
         localDB.transaction(function(transaction){
-        
-            transaction.executeSql(query, [id], function(transaction, results){
-            
-                var row = results.rows.item(0);
-                
-                updateForm(row['id'], row['nome'], row['token']);
-                
-            }, function(transaction, error){
-                updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-            });
+            transaction.executeSql(query, [], nullDataHandler, errorHandlerDB);
         });
     } 
     catch (e) {
-        updateStatus("Error: SELECT não realizado " + e + ".");
+        updateStatusDB("Erro: Dados tabela nao excluidos " + e + ".");
+        return;
     }
-   
+}
+
+
+
+
+function onCreateDB( token, nome, tipo ){
+    if ( token != "") {
+
+      onDeleteGeralDB();
+
+        var query = "insert into usuario (nome, token, tipo) VALUES (?, ?, ?);";
+        try {
+            localDB.transaction(function(transaction){
+                transaction.executeSql(query, [nome, token, tipo], function(transaction, results){
+                    if (!results.rowsAffected) {
+                        updateStatusDB("Erro: Inserção no banco não realizada");
+                    }
+                    else {
+                        //updateStatusDB("Inserção realizada, linha id: " + results.insertId);
+                         checaLogin();
+                    }
+                }, errorHandlerDB);
+            });
+        } 
+        catch (e) {
+            updateStatusDB("Erro: INSERT não realizado " + e + ".");
+        }
+
+    }
 }
 
 
@@ -177,22 +190,71 @@ function onSelect(htmlLIElement){
 
 
 
-function queryAndUpdateOverview(){
+function checaLogin(){
 
 	//Remove as linhas existentes para inserção das novas
-    var dataRows = document.getElementById("itemData").getElementsByClassName("data");
+    /*var dataRows = document.getElementById("itemData").getElementsByClassName("data");
 	
     while (dataRows.length > 0) {
         row = dataRows[0];
         document.getElementById("itemData").removeChild(row);
     };
+*/
     
 	//Realiza a leitura no banco e cria novas linhas na tabela.
-    var query = "SELECT * FROM usuario;";
+    var query = "SELECT * FROM usuario order by id desc limit 1 ;";
     try {
         localDB.transaction(function(transaction){
         
             transaction.executeSql(query, [], function(transaction, results){
+                var qtaslinhas = results.rows.length;
+
+                //
+//alert('qtaslinhas: ' + qtaslinhas);
+
+if( qtaslinhas > 0 ){
+
+var row = results.rows.item(0);
+tokenLogado = row['token'];
+idLogado = row['id'];
+nomeLogado = row['nome'];
+tipoLogado = row['tipo'];
+
+} else {
+
+tokenLogado = '';
+idLogado = '';
+nomeLogado = '';
+tipoLogado = '';
+
+}
+
+//alert('tokenLogado: ' + tokenLogado + ', idLogado: ' + idLogado);               
+
+if( tokenLogado == '' ){
+
+//alert(' teste 1 ' ); 
+
+//document.getElementById('divConteudo').style.display = 'none';
+//document.getElementById('divLogar').style.display = 'block';
+
+$("#divConteudo").hide();
+$("#divLogar").show();
+fechaBrowser();
+logar();
+
+} else {
+
+//alert(' teste 2 ' ); 
+
+abreBrowser();
+downloads();
+$("#divConteudo").show();
+$("#divLogar").hide();
+
+}
+
+/*
                 for (var i = 0; i < results.rows.length; i++) {
                 
                     var row = results.rows.item(i);
@@ -201,42 +263,38 @@ function queryAndUpdateOverview(){
                     li.setAttribute("class", "data");
                     li.setAttribute("onclick", "onSelect(this)");
                     
-                    var liText = document.createTextNode(row['nome'] + " x "+ row['token']);
+                    var liText = document.createTextNode( row['nome'] + " , token: "+ row['token'] + ", tipo: " + row['tipo'] + ", id: " + row['id']   );
                     li.appendChild(liText);
                     
                     document.getElementById("itemData").appendChild(li);
                 }
+*/
+
             }, function(transaction, error){
-                updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+                updateStatusDB("Erro: " + error.code + "<br>Mensagem: " + error.message);
             });
         });
     } 
     catch (e) {
-        updateStatus("Error: SELECT não realizado " + e + ".");
+        updateStatusDB("Error: SELECT não realizado " + e + ".");
     }
 }
 
-// 3. Funções de tratamento e status.
 
-// Tratando erros
 
-errorHandler = function(transaction, error){
-    updateStatus("Erro: " + error.message);
+
+
+// Funções de tratamento e status.
+
+errorHandlerDB = function(transaction, error){
+    updateStatusDB("Erro: " + error.message);
     return true;
 }
 
 nullDataHandler = function(transaction, results){
 }
 
-// Funções de update
 
-function updateForm(id, nome, idade){
-    document.itemForm.id.value = id;
-    document.itemForm.nome.value = nome;
-    document.itemForm.idade.value = idade;
-}
-
-function updateStatus(status){
-    //document.getElementById('status').innerHTML = status;
-alert(status);
+function updateStatusDB(status){
+    alert(status);
 }

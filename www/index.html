@@ -1,24 +1,5 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
 
 <head>
@@ -26,168 +7,140 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-<link href="css/style.css?v=1" rel="stylesheet" type="text/css">
-<link href="css/responsive.css?v=1" rel="stylesheet" type="text/css">
 
-    <title>Radio North</title>
+<link rel="stylesheet" type="text/css" href="css/index.css?v=3" />
+<link href="css/responsive.css?v=1" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" /> 
+
+ <title>Radio North</title>
+
 </head>
 
-<body style="background:#D2E2D8" >
+<body >
 
 
 
 
-<table width=100% border=0 align="center" cellpadding=0 cellspacing=0  >
-
-
-
-	<tr bgcolor="#D2E2D8">
-
-	  <td  valign="top" class="logtd">
 
 
 
 
-<div align="left">
+
+
+
+<div id="divLogar" align="left" style="clear:both; padding:10px; ">
+
+
+
+
+
+<div align="left" style="padding:10px; background: #D2E2D8; box-shadow: #666 1px 1px 5px ; ">
+
+
+
+<div style=" text-align:center; padding:5px; margin-bottom:10px; border-bottom:1px solid #63886F;" >
+ 
+		 <img class="logo_cab"  src="img/logo.png" border="0" >
+
+</div>
+
 
 
 <form method="post" action="" name="frmlogin">
 
-<div style="float:left; margin-right:10px;">
+<div >
 <b>Login:</b> <br />
 <input type="text" name="login" id="login" class="input_gr" value="" placeholder="Login" >
 </div>
 
-<div style="float:left; margin-right:2px;">
+<div >
 <b>Senha:</b> <br />
 <input type="password" name="senha" id="senha" class="input_gr" placeholder="Senha"  >
 </div>
 
 
 <div style="clear:both; padding-top:10px;">
-<b>Tipo de usu&aacute;rio :</b> <br />
-<div style="float:left; margin-right:2px;"> <input type="radio" name="tipo" id="tipo" value="cli"  > </div> 
-<div style="float:left; margin-right:12px; padding-top:7px;">Paciente </div>
-<div style="float:left; margin-right:2px;"><input type="radio" name="tipo" id="tipo" value="pro" ></div>
-<div style="float:left; margin-right:2px; padding-top:7px;">Profissional / Dentista </div>
-
+<b>Tipo de usu&aacute;rio :</b> 
 </div>
 
 <div style="clear:both; padding-top:10px;">
-<!--<input type="submit" value="Entrar" class="botoes">  <input type="hidden" name="ref" value="<?=$_GET['ref']?>" size="30">-->
-<input type="button"  value="Entrar" onClick="logar()" class="botoes">
+  <div style="float:left; width:52px; height:45px;"> <input type="radio" name="tipo" id="tipo" value="cli" style="height:40px; width:40px;"  > </div> 
+   <div style="float:left; padding-top:7px;">Paciente </div>
 </div>
 
-</form>
-
-
-<!--
-<br>
-<br>
-
-<script>
-function mostraDivLembrarSenha(){
-document.getElementById('div_lembrar_senha').style.display = 'block';
-}
-</script>
-
-<div id="div_lembrar_senha1">
-
-<a href="javascript:mostraDivLembrarSenha()" style="text-decoration:none; font-weight:bold; font-size:25px; color:#63886F;">Lembrar senha</a>
-
-
-
-</div>
--->
+<div style="clear:both; padding-top:5px;">
+  <div style="float:left; width:52px; height:42px;"><input type="radio" name="tipo" id="tipo" value="pro"  style="height:40px; width:40px;" ></div>
+  <div style="float:left;  padding-top:7px;">Profissional / Dentista </div>
 </div>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-<div id="div_lembrar_senha" align="left" style=" display:none; "  >
-
-<form method="post" action="recuperar_senha.php" name="frm_le">
-
-<div style="float:left; margin-right:10px;">
-<b>Email:</b> <br />
-<input type="text" name="email_le" class="input_gr" value="<?  echo $_REQUEST['email_le']; ?>" size="40">
-</div>
-
-
-
-<div style="clear:both; padding-top:10px;">
-<b>Tipo de usuário:</b> <br />
-<div style="float:left; margin-right:2px;"> <input type="radio" name="tipo_le" id="tipo_le" value="cli" > </div> 
-<div style="float:left; margin-right:12px; padding-top:7px;">Paciente </div>
-<div style="float:left; margin-right:2px;"><input type="radio" name="tipo_le" id="tipo_le" value="pro"  ></div>
-<div style="float:left; margin-right:2px; padding-top:7px;">Profissional / Dentista </div>
-
-</div>
 
 <div style="clear:both; padding-top:1px;">
-<input type="button" value="Enviar" class="botoes" onClick="logar()">  
+<input type="button"  value="Entrar" onClick="logar()" class="botoes" >
 </div>
 
 </form>
 
+
+
 </div>
 
 
 
-	  </td>
-
-	</tr>
-
-	
-
-
-</table>
-
-
-
-      <h3>Dados:</h3>
-      <ul  id="itemData" style="cursor:pointer;">
-      </ul>
-	  <h3>Detalhes:</h3>
-      <form name="itemForm">
-		<label for="id">Id:</label><input type="text" name="id" id="id" size=2 disabled="true"/>
-		<label for="nome">Nome:</label><input type="text" name="nome" id="nome" size=10/>
-		<label for="idade">token</label><input type="text" name="idade" id="idade" size=10 /> <br>
-		<br>
-		<input type="button" name="create" value="Create" onclick="onCreate()" />
-		<input type="button" name="update" value="Update" onclick="onUpdate()" />
-		<input type="button" name="delete" value="Delete" onclick="onDelete()" />
-      </form>
-	  <h4>Status:</h4>
-      <div id="status"></div>
+</div>
 
 
 
 
-<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div  id="divConteudo" style=" display:none;">
+
+<iframe id="ifrBrowser" name="ifrBrowser" width="100%" height="350" marginheight="0" marginwidth="0" frameborder="1"></iframe>
+<br>
+
+<div style="background:#63886F; clear:both; margin-top:10px; color:#fff; font-weigth:bold; padding:5px;  ">
+Arquivos para baixar:
+</div>
+
+<div id="divDownloads">
+
+</div>
+
+      </div>
+
+
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
 
 
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-   <script type="text/javascript" src="db.js" ></script>
+    <script type="text/javascript" src="db.js" ></script>
     <script type="text/javascript">
         app.initialize();
     </script>
@@ -197,3 +150,7 @@ document.getElementById('div_lembrar_senha').style.display = 'block';
 </body>
 
 </html>
+
+    <script type="text/javascript">
+        onInit();
+    </script>
