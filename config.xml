@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="br.com.radionorth" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Radionorth</name>
+    <name>RadioNorth</name>
     <description>
         Aplicativo para dentistas e pacientes da Radionorth acessarem exames, laudos e toda sua documentação odontolóica.
     </description>
