@@ -20,6 +20,8 @@ uuid = device.uuid;
 version =  device.version;
 serial = device.serial;
 
+checkConnection();
+
 //pedidos();
 //alert('testando');
 
@@ -177,14 +179,14 @@ ifrBrowser.location.href='embranco.html';
 
 
 
-/*
+
 function checkConnection() {
 
 alert('testando conexao:');
 var networkState = navigator.connection.type;
 
 
-alert('networkState:' + networkState );
+alert('a net e do tipo :' + networkState );
 
 var states = '';
 if( networkState == 'Connection.UNKNOWN' ){    states  = 'Unknown connection'; }
@@ -199,10 +201,10 @@ if( networkState == 'Connection.NONE' ){        states     = 'No network connect
  alert('Connection type: ' + states );
 
 
-return networkState;
+//return networkState;
 
 }
-*/
+
 
 
 function pedidos(){

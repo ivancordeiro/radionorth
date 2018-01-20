@@ -15,9 +15,9 @@ function onInit(){
            // onUpdateDB( 3, 'joao23', 'daa4s57ree23', 'cli' ); //id, nome, token, tipo 
             //onDeleteDB(2);//id
 
-       var net = navigator.connection.type;
+       //var net = navigator.connection.type;
 
-alert('a net e do tipo: ' + net );
+//alert('a net e do tipo: ' + net );
 
 //if( net == 'Connection.NONE' ){
 //alert('O app não encontrou conexao com internet' );
