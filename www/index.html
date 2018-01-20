@@ -36,7 +36,7 @@
     <title>Radio North</title>
 </head>
 
-<body style="background:#D2E2D8">
+<body style="background:#D2E2D8" >
 
 
 
@@ -78,7 +78,8 @@
 </div>
 
 <div style="clear:both; padding-top:10px;">
-<input type="submit" value="Entrar" class="botoes">  <!--<input type="hidden" name="ref" value="<?=$_GET['ref']?>" size="30">-->
+<!--<input type="submit" value="Entrar" class="botoes">  <input type="hidden" name="ref" value="<?=$_GET['ref']?>" size="30">-->
+<input type="button"  value="Entrar" onClick="logar()" class="botoes">
 </div>
 
 </form>
@@ -139,7 +140,7 @@ document.getElementById('div_lembrar_senha').style.display = 'block';
 </div>
 
 <div style="clear:both; padding-top:1px;">
-<input type="button" value="Enviar" class="botoes" onClick="logar();">  
+<input type="button" value="Enviar" class="botoes" onClick="logar()">  
 </div>
 
 </form>
@@ -157,7 +158,28 @@ document.getElementById('div_lembrar_senha').style.display = 'block';
 
 </table>
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+
+      <h3>Dados:</h3>
+      <ul  id="itemData" style="cursor:pointer;">
+      </ul>
+	  <h3>Detalhes:</h3>
+      <form name="itemForm">
+		<label for="id">Id:</label><input type="text" name="id" id="id" size=2 disabled="true"/>
+		<label for="nome">Nome:</label><input type="text" name="nome" id="nome" size=10/>
+		<label for="idade">token</label><input type="text" name="idade" id="idade" size=10 /> <br>
+		<br>
+		<input type="button" name="create" value="Create" onclick="onCreate()" />
+		<input type="button" name="update" value="Update" onclick="onUpdate()" />
+		<input type="button" name="delete" value="Delete" onclick="onDelete()" />
+      </form>
+	  <h4>Status:</h4>
+      <div id="status"></div>
+
+
+
+
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
@@ -165,9 +187,13 @@ document.getElementById('div_lembrar_senha').style.display = 'block';
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+   <script type="text/javascript" src="db.js" ></script>
     <script type="text/javascript">
         app.initialize();
     </script>
+
+
+
 </body>
 
 </html>
