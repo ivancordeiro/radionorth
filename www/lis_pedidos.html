@@ -1,301 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>RadioNorth</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
 
 <link href="css/style.css?v=1" rel="stylesheet" type="text/css">
 <link href="css/responsive.css?v=1" rel="stylesheet" type="text/css">
 
 
-<script language="javascript" type="text/javascript" src="js2/scripts.js"></script>
-<script language="javascript" type="text/javascript" src="js2/principal.js"></script>
-<script language="javascript" type="text/javascript" src="js2/searchbox.js"></script>
-<script language="javascript" type="text/javascript" src="js2/tabs.js"></script>
-<script language="javascript" type="text/javascript" src="js2/jquery.js"></script>
-<script language="javascript" type="text/javascript" src="js2/jquery.flyout.js"></script>
-<script language="javascript" type="text/javascript" src="js2/jquery.expander.js"></script>
-<script language="javascript" type="text/javascript" src="js2/jquery.dimensions.js"></script>
-<script language="javascript" type="text/javascript" src="js2/jquery.accordion.js"></script>
-
-
-
-
-<script type="text/javascript">
-
-
-
-var menuwidth='200px' //default menu width
-
-var menubgcolor='#efefef'  //menu bgcolor
-
-var disappeardelay=250  //menu disappear speed onMouseout (in miliseconds)
-
-var hidemenu_onclick="yes" //hide menu when user clicks within menu?
-
-
-
-var ie4=document.all
-
-var ns6=document.getElementById&&!document.all
-
-
-
-if (ie4||ns6)
-
-document.write('<div id="dropmenudiv" style="visibility:hidden;width:'+menuwidth+';background-color:'+menubgcolor+'" onMouseover="clearhidemenu()" onMouseout="dynamichide(event)"></div>')
-
-
-
-function getposOffset(what, offsettype){
-
-var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
-
-var parentEl=what.offsetParent;
-
-while (parentEl!=null){
-
-totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
-
-parentEl=parentEl.offsetParent;
-
-}
-
-return totaloffset;
-
-}
-
-
-
-
-
-function showhide(obj, e, visible, hidden, menuwidth){
-
-if (ie4||ns6)
-
-dropmenuobj.style.left=dropmenuobj.style.top="-500px"
-
-if (menuwidth!=""){
-
-dropmenuobj.widthobj=dropmenuobj.style
-
-dropmenuobj.widthobj.width=menuwidth
-
-}
-
-if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover")
-
-obj.visibility=visible
-
-else if (e.type=="click")
-
-obj.visibility=hidden
-
-}
-
-
-
-function iecompattest(){
-
-return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
-
-}
-
-
-
-function clearbrowseredge(obj, whichedge){
-
-var edgeoffset=0
-
-if (whichedge=="rightedge"){
-
-var windowedge=ie4 && !window.opera? iecompattest().scrollLeft+iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
-
-dropmenuobj.contentmeasure=dropmenuobj.offsetWidth
-
-if (windowedge-dropmenuobj.x < dropmenuobj.contentmeasure)
-
-edgeoffset=dropmenuobj.contentmeasure-obj.offsetWidth
-
-}
-
-else{
-
-var topedge=ie4 && !window.opera? iecompattest().scrollTop : window.pageYOffset
-
-var windowedge=ie4 && !window.opera? iecompattest().scrollTop+iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
-
-dropmenuobj.contentmeasure=dropmenuobj.offsetHeight
-
-if (windowedge-dropmenuobj.y < dropmenuobj.contentmeasure){ //move up?
-
-edgeoffset=dropmenuobj.contentmeasure+obj.offsetHeight
-
-if ((dropmenuobj.y-topedge)<dropmenuobj.contentmeasure) //up no good either?
-
-edgeoffset=dropmenuobj.y+obj.offsetHeight-topedge
-
-}
-
-}
-
-return edgeoffset
-
-}
-
-
-
-function populatemenu(what){
-
-if (ie4||ns6)
-
-dropmenuobj.innerHTML=what.join("")
-
-}
-
-
-
-
-
-function dropdownmenu(obj, e, menucontents, menuwidth){
-
-if (window.event) event.cancelBubble=true
-
-else if (e.stopPropagation) e.stopPropagation()
-
-clearhidemenu()
-
-dropmenuobj=document.getElementById? document.getElementById("dropmenudiv") : dropmenudiv
-
-populatemenu(menucontents)
-
-
-
-if (ie4||ns6){
-
-showhide(dropmenuobj.style, e, "visible", "hidden", menuwidth)
-
-
-
-dropmenuobj.x=getposOffset(obj, "left")
-
-dropmenuobj.y=getposOffset(obj, "top")
-
-dropmenuobj.style.left=dropmenuobj.x-clearbrowseredge(obj, "rightedge")+"px"
-
-dropmenuobj.style.top=dropmenuobj.y-clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+"px"
-
-}
-
-
-
-return clickreturnvalue()
-
-}
-
-
-
-function clickreturnvalue(){
-
-if (ie4||ns6) return false
-
-else return true
-
-}
-
-
-
-function contains_ns6(a, b) {
-
-while (b.parentNode)
-
-if ((b = b.parentNode) == a)
-
-return true;
-
-return false;
-
-}
-
-
-
-function dynamichide(e){
-
-if (ie4&&!dropmenuobj.contains(e.toElement))
-
-delayhidemenu()
-
-else if (ns6&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
-
-delayhidemenu()
-
-}
-
-
-
-function hidemenu(e){
-
-if (typeof dropmenuobj!="undefined"){
-
-if (ie4||ns6)
-
-dropmenuobj.style.visibility="hidden"
-
-}
-
-}
-
-
-
-function delayhidemenu(){
-
-if (ie4||ns6)
-
-delayhide=setTimeout("hidemenu()",disappeardelay)
-
-}
-
-
-
-function clearhidemenu(){
-
-if (typeof delayhide!="undefined")
-
-clearTimeout(delayhide)
-
-}
-
-
-
-if (hidemenu_onclick=="yes")
-
-document.onclick=hidemenu
-
-
-
-$(function() {
-	$('a[@name=flyout]').flyout({loader:'loader',widthMargin:300,heightMargin:300});
-});
-
-$(document).ready(function() {
-
-  // simple example, using all default options
-  $('div.expandable').expander({
-  expandText: '[Mostrar]', 
-  userCollapseText: '[Ocultar]'
-  });
-  
-  // *** OR ***
-  
-});
-</script>
-
 </head>
-<body onLoad="init()">
+<body >
 
 
- <? if ( $_GET['semcab'] != 's' ){ ?>
+
 
 <table width=100% border=0 align="center" cellpadding=0 cellspacing=0   > 
 
@@ -338,14 +63,14 @@ $(document).ready(function() {
     <td height="39" colspan="2"  style="border-bottom:1px solid #999999; background-color:#94B7A0;">
    
 
-<span class="navbutton" onMouseOver="this.className='navbuttonover';dropdownmenu(this, event, menu4, '270px');" onMouseOut="this.className='navbutton';delayhidemenu();" onClick="window.location='t1.html'">Pacientes</span>  
+<span class="navbutton" onMouseOver="this.className='navbuttonover';" onMouseOut="this.className='navbutton';" onClick="window.location='lis_clientes.html'">Pacientes</span>  
 
-	<span class="navbutton" onMouseOver="this.className='navbuttonover';dropdownmenu(this, event, menu7, '220px');" onMouseOut="this.className='navbutton';delayhidemenu();" onClick="window.location='lis_pedidos.php'">Pedidos</span>
+	<span class="navbutton" onMouseOver="this.className='navbuttonover';" onMouseOut="this.className='navbutton';" onClick="window.location='lis_pedidos.html'">Pedidos</span>
 
 
-	<span class="navbutton" onMouseOver="this.className='navbuttonover';dropdownmenu(this, event, '', '250px');" onMouseOut="this.className='navbutton';delayhidemenu();" onClick="window.location='minha_conta.php'">Senha</span>
+	<span class="navbutton" onMouseOver="this.className='navbuttonover';" onMouseOut="this.className='navbutton';" onClick="window.location='minha_conta.html'">Senha</span>
 
-	<span class="navbutton" onMouseOver="this.className='navbuttonover';dropdownmenu(this, event, '', '250px');" onMouseOut="this.className='navbutton';delayhidemenu();" onClick="window.location='?acao=logout'">Sair</span>
+	<span class="navbutton" onMouseOver="this.className='navbuttonover';" onMouseOut="this.className='navbutton';" onClick="window.location='?acao=logout'">Sair</span>
 
 
     </td>
@@ -357,8 +82,6 @@ $(document).ready(function() {
 
 
 
-
- <? } ?>
 
 
 
@@ -388,8 +111,6 @@ $(document).ready(function() {
 
 
 
-
-   <? if (  $_SESSION['sist_cli_tipo'] == 'pro' ) { ?> 
 
     <form action="" method="get">
 
@@ -477,101 +198,7 @@ $(document).ready(function() {
     </form>
 
 
-        
-<!--
-<?
 
-
-
-$qry2 = new mysql();
-
-
-$reg_por_pag = $_GET['regi'];
-
-if($reg_por_pag == "todos"){$reg_por_pag = 99999999;}
-
-if(($reg_por_pag == "") or (!is_numeric($reg_por_pag))){$reg_por_pag = 50;}
-
-
-$whe .= "AND p.status != 'ca' AND p.publicado = 1 AND c.situacao = 0 ";
-
-if($_GET['s'] != ""){
-
-if($_GET['s'] == "pe"){
-$sta = '';
-} else {
-$sta = $_GET['s'];
-}
-
-$whe .= "AND p.status = '$sta' ";
-
-}
-
-
-
-
-if($_GET['de'] != ""){
-
-$whe .= "AND p.data_pedido > '".datetime($_GET['de'])." 00:00:00' ";
-
-}
-
-
-
-if($_GET['ate'] != ""){
-
-$whe .= "AND p.data_pedido < '".datetime($_GET['ate'])." 23:59:59' ";
-
-}
-
-
-
-
-if( $_SESSION['sist_cli_tipo'] == "cli"){
-
-$whe .= "AND p.clientes_id = '".$_SESSION['sist_cli_id']."' ";
-
-}
-
-
-if( $_SESSION['sist_cli_tipo'] == "pro"){
-
-$whe .= "AND c.idprofissional = '".$_SESSION['sist_cli_id']."' ";
-
-}
-
-
-
-if( $_GET['busca'] != ""){
-$whe .= "AND ( c.nome like '%".$_GET['busca']."%' or c.empresa like '%".$_GET['busca']."%'  or c.email like '%".$_GET['busca']."%'   ) ";
-}
-
-
-
-$whe .= "AND p.semped = '' ";
-
-
-
-$pag = new pag("SELECT count(*) FROM pedidos p inner join clientes c on p.clientes_id = c.id inner join clientes2 c2 on c.idprofissional = c2.id WHERE 1 $whe  order by p.data_pedido desc ",$reg_por_pag);
-
-$col = new colors(array("#FFFFFF","#EEEEEE"));
-
-
-
-
-
-$qry->query(" SELECT p.*, c.nome as nomecliente, c.idprofissional, c2.nome as nomecliente2 FROM pedidos p inner join clientes c on p.clientes_id = c.id inner join clientes2 c2 on c.idprofissional = c2.id WHERE 1 $whe  order by p.data_pedido desc ".$pag->str());
-
-
-while($r=$qry->fetch()){
-
-$nomecliente = $r['nomecliente'];
-$nomecliente2 = $r['nomecliente2'];
-
-
-
-?>
--->
 <div class="lispedBoxPed"> 
 
 <div class="lispedPacLinha">
@@ -591,13 +218,15 @@ $nomecliente2 = $r['nomecliente2'];
 </div>
 
 <div class="lispedDet">
-<a href="pedido.php?id=<?=$r['id']?>" style="TEXT-DECORATION:NONE;">
+<a href="pedido.php?id=" style="TEXT-DECORATION:NONE;">
 <input type="button" class="botoes" value="Detalhes">
 </a>
 </div> 
 
 </div>
-<!-- <? } ?> -->
+
+
+
 
 
 
