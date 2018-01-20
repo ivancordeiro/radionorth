@@ -20,7 +20,8 @@ uuid = device.uuid;
 version =  device.version;
 serial = device.serial;
 
-checkConnection();
+vr conn = conexao();
+conexaoMSG(conn);
 
 //pedidos();
 //alert('testando');
@@ -29,6 +30,14 @@ checkConnection();
 
 }
 
+
+function conexaoMSG(conn){
+
+if( conn == 'none' || conn == 'NONE' ){
+alert('O app nao encontrou conexao com a internet');
+}
+
+}
 
 
 
@@ -180,29 +189,9 @@ ifrBrowser.location.href='embranco.html';
 
 
 
-function checkConnection() {
-
-alert('testando conexao:');
+function conexao(){
 var networkState = navigator.connection.type;
-
-
-alert('a net e do tipo :' + networkState );
-
-var states = '';
-if( networkState == 'Connection.UNKNOWN' ){    states  = 'Unknown connection'; }
-if( networkState == 'Connection.ETHERNET' ){        states = 'Ethernet connection'; }
-if( networkState == 'Connection.WIFI' ){        states     = 'WiFi connection'; }
-if( networkState == 'Connection.CELL_2G' ){        states  = 'Cell 2G connection'; }
-if( networkState == 'Connection.CELL_3G' ){        states  = 'Cell 3G connection'; }
- if( networkState == 'Connection.CELL_4G' ){       states  = 'Cell 4G connection'; }
-if( networkState == 'Connection.CELL' ){        states     = 'Cell generic connection'; }
-if( networkState == 'Connection.NONE' ){        states     = 'No network connection'; }
-
- alert('Connection type: ' + states );
-
-
-//return networkState;
-
+return networkState;
 }
 
 

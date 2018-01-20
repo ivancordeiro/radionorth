@@ -22,7 +22,18 @@ function onInit(){
 //if( net == 'Connection.NONE' ){
 //alert('O app não encontrou conexao com internet' );
 //} else {
+
+vr conn = conexao();
+
+if( conn == 'none' || conn == 'NONE' ){
+conexaoMSG(conn);
+} else {
 checaLogin();
+}
+
+
+
+
 //}
             
 
