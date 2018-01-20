@@ -36,7 +36,7 @@
     <title>Radio North</title>
 </head>
 
-<body>
+<body style="background:#D2E2D8">
 
 
 
@@ -53,40 +53,38 @@
 
 
 <div align="left">
-<!--
-<img src="<?  echo ENDERECO . ADMIN; ?>site_seguro2.png"><br>
-<br>
--->
 
-<form method="post" action="logando.php" name="frmlogin">
+
+<form method="post" action="" name="frmlogin">
 
 <div style="float:left; margin-right:10px;">
-<b>Usuário (login):</b> <br />
-<input type="text" name="email" class="input_gr" value="<?  echo $_REQUEST['email']; ?>" size="40">
+<b>Login:</b> <br />
+<input type="text" name="login" id="login" class="input_gr" value="" placeholder="Login" >
 </div>
 
 <div style="float:left; margin-right:2px;">
 <b>Senha:</b> <br />
-<input type="password" name="senha" class="input_gr" size="20">
+<input type="password" name="senha" id="senha" class="input_gr" placeholder="Senha"  >
 </div>
 
 
 <div style="clear:both; padding-top:10px;">
-<b>Tipo de usuário:</b> <br />
-<div style="float:left; margin-right:2px;"> <input type="radio" name="tipo" id="tipo" value="cli" <? if( $_REQUEST['tipo'] == 'cli' || $_REQUEST['tipo'] == '' ) { echo ' checked '; } ?> > </div> 
+<b>Tipo de usu&aacute;rio :</b> <br />
+<div style="float:left; margin-right:2px;"> <input type="radio" name="tipo" id="tipo" value="cli"  > </div> 
 <div style="float:left; margin-right:12px; padding-top:7px;">Paciente </div>
-<div style="float:left; margin-right:2px;"><input type="radio" name="tipo" id="tipo" value="pro" <? if( $_REQUEST['tipo'] == 'pro' ) { echo ' checked '; } ?> ></div>
+<div style="float:left; margin-right:2px;"><input type="radio" name="tipo" id="tipo" value="pro" ></div>
 <div style="float:left; margin-right:2px; padding-top:7px;">Profissional / Dentista </div>
 
 </div>
 
 <div style="clear:both; padding-top:10px;">
-<input type="submit" value="Entrar" class="botoes">  <input type="hidden" name="ref" value="<?=$_GET['ref']?>" size="30">
+<input type="submit" value="Entrar" class="botoes">  <!--<input type="hidden" name="ref" value="<?=$_GET['ref']?>" size="30">-->
 </div>
 
 </form>
 
 
+<!--
 <br>
 <br>
 
@@ -103,12 +101,24 @@ document.getElementById('div_lembrar_senha').style.display = 'block';
 
 
 </div>
+-->
 </div>
 
 
 
 
-<div id="div_lembrar_senha" align="left" style=" <?  if(  $_GET['recup'] != 's' ){ echo 'display:none;';} ?>"  >
+
+
+
+
+
+
+
+
+
+
+
+<div id="div_lembrar_senha" align="left" style=" display:none; "  >
 
 <form method="post" action="recuperar_senha.php" name="frm_le">
 
@@ -129,7 +139,7 @@ document.getElementById('div_lembrar_senha').style.display = 'block';
 </div>
 
 <div style="clear:both; padding-top:1px;">
-<input type="submit" value="Enviar" class="botoes">  
+<input type="button" value="Enviar" class="botoes" onClick="logar();">  
 </div>
 
 </form>
@@ -146,6 +156,10 @@ document.getElementById('div_lembrar_senha').style.display = 'block';
 
 
 </table>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
 

@@ -34,6 +34,37 @@ serial = device.serial;
 
 
 
+function logar(){
+
+
+alert('testando envio json 4');
+	
+$.ajax({
+dataType: "json",
+type: "POST",
+url: "http://ivanprogramador.com.br/json4.php",
+data: "dia=" ,
+crossDomain: true,
+
+success: function(retorno){ 
+
+alert(  "Testando retorno de json 4: " + retorno.teste);
+
+}
+,beforeSend: function(){
+},
+complete: function(){
+}
+
+});
+
+
+}
+
+
+
+
+
 function checkConnection() {
 
 alert('testando conexao:');
