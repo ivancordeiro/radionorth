@@ -206,10 +206,10 @@ background-color: #63886F;
 
 
 .botoes2{
-filter:Alpha(Opacity=80);opacity:.8;
+filter:Alpha(Opacity=90);opacity:.9;
 }
 
 .botoes2:hover{
- filter:Alpha(Opacity=60);opacity:.6;
+ filter:Alpha(Opacity=70);opacity:.7;
 box-shadow: #555 2px 2px 2px; /*cor, afast dir, afast bottom, esmaec*/
 }

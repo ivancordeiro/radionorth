@@ -2,7 +2,18 @@
 
 var localDB = null;
 
+
+
 function onInit(){
+
+var conn = conexao();
+if( conn == 'none' || conn == 'NONE' ){ //a
+alert('O app nao detectou conexao com internet');
+} else {//a
+
+
+
+
     try {
         if (!window.openDatabase) {
             updateStatusDB("Erro: Seu navegador não permite banco de dados.");
@@ -30,7 +41,20 @@ function onInit(){
         }
         return;
     }
+
+
+
+
+
+}//a
+
 }
+
+
+
+
+
+
 
 
 

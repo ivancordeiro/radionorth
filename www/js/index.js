@@ -24,13 +24,11 @@ uuid = device.uuid;
 version =  device.version;
 serial = device.serial;
 
-var conn = conexao();
-conexaoMSG(conn);
 
 //pedidos();
 //alert('testando');
 
-
+/*
 $("#bt_logar").click(function(){
 logar();
 });
@@ -42,6 +40,7 @@ downloads();
 
 
 onInit();
+*/
 
 }
 
@@ -55,18 +54,11 @@ onInit();
 
 
 
-function conexaoMSG(conn){
 
-if( conn == 'none' || conn == 'NONE' ){
-alert('O app nao encontrou conexao com a internet');
+
+function atualizar(){
+checaLogin();
 }
-
-}
-
-
-
-
-
 
 
 
@@ -271,7 +263,7 @@ var idpedido = retorno['pedidos'][pedido]['idpedido'];
 //alert('idpedido:' + idpedido);
 
 //inicio div pedido
-html += '<div style="clear:both; border:1px solid #000; padding:5px;  margin-bottom:10px; background:#D3E3D8; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px;  ">';
+html += '<div style="clear:both; border:1px solid #000; padding:5px;  margin-bottom:10px; background:#fff; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px;  ">';
 
 html += '<div style="clear:both; border-bottom:1px solid #576E5E; padding-bottom:5px; ">';
 html += retorno['pedidos'][pedido]['ident'] + '<br>';
@@ -284,10 +276,12 @@ var arquivo = retorno['pedidos'][pedido]['arquivos'][arq]['arquivo'];
 var dataarq = retorno['pedidos'][pedido]['arquivos'][arq]['data'];
 var nomearq = retorno['pedidos'][pedido]['arquivos'][arq]['nome'];
 
+var identBtn = 'bt_arq_' + idpedido + '_' + arquivo;
+
 html += '<div style="clear:both; border-bottom:1px solid #576E5E; padding-bottom:5px; ">';
 html += 'ARQ:' + arquivo + '<br>';
 html += 'Data:' + dataarq +'<br>' ;
-html += '<input type="button" onClick="baixarArquivo(\''+arquivo+'\',\'arq\',\''+idpedido+'\',\'\')" value="Baixar" style="background-color:#63886F;width:70px; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px; height:30px; padding:5px; color:#fff; font-weight:bold; font-size:15px; cursor: pointer;">'   +   '<br>' ; 
+html += '<input id="'+identBtn+'" type="button" onClick="baixarArquivo(\''+arquivo+'\',\'arq\',\''+idpedido+'\',\'\',\''+identBtn+'\')" value="Baixar" style="background-color:#63886F;width:120px; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px; height:40px; padding:5px; color:#fff; font-weight:bold; font-size:15px; cursor: pointer;">'   +   '<br>' ; 
 html += '</div>';
 }//2
 
@@ -300,10 +294,12 @@ var datalau = retorno['pedidos'][pedido]['laudos'][lau]['data'];
 var tokenlau = retorno['pedidos'][pedido]['laudos'][lau]['token'];
 var nomealaudo = retorno['pedidos'][pedido]['laudos'][lau]['nomealaudo'];
 
+var identBtn = 'bt_lau_' + idpedido + '_' + idlau;
+
 html += '<div style="clear:both; border-bottom:1px solid #576E5E; padding-bottom:5px; ">';
 html += nomealaudo + '<br>';
 html += 'Data:' + datalau +'<br>' ;
-html += '<input type="button" onClick="baixarArquivo(\''+nomealaudo+'\',\'lau\',\''+idpedido+'\',\''+tokenlau+'\')" value="Baixar" style="background-color:#63886F;width:70px; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px; height:30px; padding:5px; color:#fff; font-weight:bold; font-size:15px; cursor: pointer;">'   +   '<br>' ; 
+html += '<input id="'+identBtn+'" type="button" onClick="baixarArquivo(\''+nomealaudo+'\',\'lau\',\''+idpedido+'\',\''+tokenlau+'\',\''+identBtn+'\')" value="Baixar" style="background-color:#63886F;width:120px; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px; height:40px; padding:5px; color:#fff; font-weight:bold; font-size:15px; cursor: pointer;">'   +   '<br>' ; 
 html += '</div>';
 
 
@@ -387,9 +383,10 @@ location.href='lis_pedidos.html';
 
 
 
-function baixarArquivo(arq,tipo,idped,token){ 
+function baixarArquivo(arq,tipo,idped,token, ident){ 
 
-alert('chamou funcao dowload');
+//alert('chamou funcao dowload');
+$("#" + ident).val( 'Baixando...' );
 
 if( tipo == 'lau' ){
 var arquivoBX = baseUrl + baseLaudos + 'laudo.php?token=' + token ; 
@@ -401,7 +398,7 @@ var arquivoBX2 = 'ped' + idped + '/' + arq ;
 }
 
 	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
-	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
+	//alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
 
 
 		var ft = new FileTransfer();
@@ -411,12 +408,14 @@ var arquivoBX2 = 'ped' + idped + '/' + arq ;
 		  arquivoBX, // what u download
 		  myPath + pastaLocal + arquivoBX2, // this is the filename as well complete url
 		  function(entry) {
-			alert("success 1");
-			alert(JSON.stringify(entry));		
+			alert("O arquivo foi baixado com sucesso!");
+			//alert(JSON.stringify(entry));
+            $("#" + ident).val( 'Baixar' );		
 		  },
 		  function(err) {
-			alert('erro 1'+ err);
-			alert(JSON.stringify(err));
+			alert('Erro ao fazer o download do arquivo:'+ err);
+			//alert(JSON.stringify(err));
+            $("#" + ident).val( 'Baixar' );
 		  }	
 		);
 
