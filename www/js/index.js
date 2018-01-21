@@ -1,5 +1,6 @@
 
-baseUrl = 'http://radionorth.com.br/sistema/';
+//baseUrl = 'http://radionorth.com.br/sistema/';
+baseUrl = 'http://ivanprogramador.com.br/teste/hadaya/';
 baseCliente = 'cliente/';
 baseArquivos = 'arquivos/';
 baseLaudos = 'pdf/';
