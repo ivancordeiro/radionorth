@@ -58,6 +58,7 @@ onInit();
 
 
 function atualizar(){
+LimpaDownloads();
 checaLogin();
 }
 
@@ -189,6 +190,10 @@ function deslogar(){
 
 //alert('deslogando');
 
+tokenLogado = '';
+idLogado = '';
+nomeLogado = '';
+tipoLogado = '';
 onDeleteGeralDB();
 telaLogin();
 
@@ -233,11 +238,6 @@ $("#divLogar").show();
 fechaBrowser();
 LimpaDownloads();
 
-if( altTela != '' && altTela > 300 ){
-var h_ifr = altTela - 100;
-document.getElementById('ifrBrowser').style.height = h_ifr + 'px';
-}
-
 }
 
 
@@ -250,11 +250,20 @@ $("#divConteudo").show();
 $("#divLogar").hide();
 aba1();
 
+if( altTela != '' && altTela > 300 ){
+var h_ifr = altTela - 100;
+document.getElementById('ifrBrowser').style.height = h_ifr + 'px';
+}
+
 }
 
 
 
 function LimpaDownloads(){
+ultimoPedido = '';
+totalPedidos = '';
+vezPedidos = 1;
+qtosPedidosTem = 0;
 document.getElementById('divDownloads').innerHTML = '';
 }
 
@@ -452,11 +461,12 @@ return networkState;
 
 
 
+/*
 function pedidos(){
 alert('pedidos');
 location.href='lis_pedidos.html';
 }
-
+*/
 
 
 
