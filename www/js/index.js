@@ -221,6 +221,11 @@ $("#aba2").show();
 }
 
 
+
+
+
+
+
 function telaLogin(){
 
 $("#divConteudo").hide();
@@ -256,9 +261,24 @@ document.getElementById('divDownloads').innerHTML = '';
 
 
 
+
+
+
+
+
+
+
+
+
 function downloads(){
 
-//alert('logando');
+var conn = conexao();
+if( conn == 'none' || conn == 'NONE' ){ //conn
+
+alert('O aplicativo nao detectou conexao com internet.');
+
+} else {//conn
+
 
 var dadosDown = "tokenUsu=" + tokenLogado + "&tipoUsu=" + tipoLogado + "&ultimoPedido=" + ultimoPedido  + "&totalPedidos=" + totalPedidos + "&vezPedidos=" + vezPedidos;
 //alert('dados: ' + dadosDown);
@@ -381,6 +401,8 @@ complete: function(){
 });
 
 
+}//conn
+
 }
 
 
@@ -390,10 +412,26 @@ complete: function(){
 
 
 function abreBrowser(){
+
+var conn = conexao();
+if( conn == 'none' || conn == 'NONE' ){ //conn
+
+alert('O aplicativo nao detectou conexao com internet.');
+
+} else {//conn
+
 var urlBrow = baseUrl + baseCliente + 'lis_pedidos.php?app=s&tokenUsu=' + tokenLogado  + '&tipoUsu=' + tipoLogado ;
 //alert( 'urlBrow: ' + urlBrow );
 ifrBrowser.location.href =  urlBrow;
+
+}//conn
+
 }
+
+
+
+
+
 
 
 function fechaBrowser(){
@@ -425,7 +463,19 @@ location.href='lis_pedidos.html';
 
 
 
+
+
+
 function baixarArquivo(arq,tipo,idped,token, ident){ 
+
+var conn = conexao();
+if( conn == 'none' || conn == 'NONE' ){ //conn
+
+alert('O aplicativo nao detectou conexao com internet.');
+
+} else {//conn
+
+
 
 //alert('ident: ' + ident);
 
@@ -464,6 +514,8 @@ var arquivoBX2 = 'ped' + idped + '/' + arq ;
 		);
 
 
+
+}//conn
 
 }
 
