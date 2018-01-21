@@ -4,13 +4,19 @@ var localDB = null;
 
 
 
+
+
+
+
 function onInit(){
 
 var conn = conexao();
-if( conn == 'none' || conn == 'NONE' ){ //a
+if( conn == 'none' || conn == 'NONE' ){ //conn
+
 alert('O aplicativo nao detectou conexao com internet.');
-fechar();
-} else {//a
+telaLogin();
+
+} else {//conn
 
 
 
@@ -47,7 +53,7 @@ fechar();
 
 
 
-}//a
+}//conn
 
 }
 
@@ -218,6 +224,11 @@ function onCreateDB( token, nome, tipo ){
 
 
 
+
+
+
+
+
 function checaLogin(){
 
     var query = "SELECT * FROM usuario order by id desc limit 1 ;";
@@ -273,6 +284,9 @@ function checaLogin(){
         updateStatusDB("Error: SELECT não realizado " + e + ".");
     }
 }
+
+
+
 
 
 
