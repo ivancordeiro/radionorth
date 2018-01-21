@@ -25,10 +25,8 @@ version =  device.version;
 serial = device.serial;
 
 
-//pedidos();
-//alert('testando');
 
-/*
+// /*
 $("#bt_logar").click(function(){
 logar();
 });
@@ -40,7 +38,7 @@ downloads();
 
 
 onInit();
-*/
+//*/
 
 }
 
