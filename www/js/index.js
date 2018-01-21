@@ -294,11 +294,12 @@ var dataarq = retorno['pedidos'][pedido]['arquivos'][arq]['data'];
 var nomearq = retorno['pedidos'][pedido]['arquivos'][arq]['nome'];
 
 var identBtn = 'bt_arq_' + idpedido + '_' + arquivo;
+alert('identBtn: ' + identBtn);
 
 html += '<div style="clear:both; border-bottom:1px solid #576E5E; padding-bottom:5px; ">';
 html += 'ARQ:' + arquivo + '<br>';
 html += 'Data:' + dataarq +'<br>' ;
-html += '<input id="'+identBtn+'" type="button" onClick="baixarArquivo(\''+arquivo+'\',\'arq\',\''+idpedido+'\',\'\',\''+identBtn+'\')" value="Baixar" style="background-color:#63886F;width:120px; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px; height:40px; padding:5px; color:#fff; font-weight:bold; font-size:15px; cursor: pointer;">'   +   '<br>' ; 
+html += '<input id="'+ identBtn +'" type="button" onClick="baixarArquivo(\''+arquivo+'\',\'arq\',\''+idpedido+'\',\'\',\''+identBtn+'\')" value="Baixar" style="background-color:#63886F;width:120px; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px; height:40px; padding:5px; color:#fff; font-weight:bold; font-size:15px; cursor: pointer;">'   +   '<br>' ; 
 html += '</div>';
 }//2
 
