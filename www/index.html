@@ -31,7 +31,7 @@
 
 
 
-
+<!-- inicio div logar  -->
 <div id="divLogar" align="left" style="clear:both; padding:10px; display:none; ">
 
 
@@ -100,6 +100,7 @@ ENTRAR
 
 
 </div>
+<!-- fim div logar  -->
 
 
 
@@ -118,30 +119,34 @@ ENTRAR
 
 
 
-
-
+<!-- inicio div conteudo  -->
 <div  id="divConteudo" style=" display:none;  padding-top:0px !important;">
 
+
+
+
+<!-- inicio cabecalho  -->
+<div  style="clear:both; ">
 <table border="0" cellpadding="0" cellspacing="0" style="width:100%; background:#000;">
 <tr>
 <td valign="top" align="left" style="padding:2px; width:34%; ">
 <div onClick="atualizar()"  
 style="float:left; color:#fff; font-size:12px; width:99%; cursor: pointer; background:#576E5E; margin:1px ; 
- height:35px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:12px; ">
+ height:35px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:16px; ">
 Atualizar
 </div>
 </td>
 <td valign="top" align="left" style="padding:2px; width:33%; ">
 <div onClick="deslogar()"  
 style="float:left; color:#fff; font-size:12px; width:99%; cursor: pointer; background:#576E5E; margin:1px ; 
- height:35px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:12px; ">
+ height:35px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:16px; ">
 DESLOGAR
 </div>
 </td>
 <td valign="top" align="right" style="padding:2px; padding-left:0px; width:33%; ">
 <div onClick="fechar()"  
 style="float:left; color:#fff; font-size:12px; width:99%;  cursor: pointer; background:#576E5E; margin:1px ; 
-height:35px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:12px; ">
+height:35px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:16px; ">
 FECHAR O APP
 </div>
 </td>
@@ -149,25 +154,127 @@ FECHAR O APP
 </table>
 
 
+</div>
+<!-- fim cabecalho  -->
 
 
 
 
 
-<div style="clear:both; ">
-<iframe id="ifrBrowser" name="ifrBrowser" width="100%" height="350" marginheight="0" marginwidth="0" frameborder="0" scrolling="auto"></iframe>
+
+
+
+
+<!-- inicio aba 1  -->
+<div id="aba1" style="clear:both; display:none;" >
+
+
+<div  style="clear:both; margin-top:5px; ">
+<table border="0" cellpadding="0" cellspacing="0" style="height:55px;  ">
+<tr>
+<td valign="bottom" align="left" style="padding:0px; width:140px;   ">
+
+<div align="left"   style="background:#5F8D6E; font-size:16px;  color:#fff; font-weigth:bold; padding:2px; padding-top:27px; padding-bottom:0px;   margin:0px; 
+border-top-right-radius: 15px;
+-moz-border-radius-topright: 15px;
+-webkit-border-top-right-radius: 15px; 
+border-top-left-radius: 15px;
+-moz-border-radius-topleft: 15px;
+-webkit-border-top-left-radius: 15px; 
+ height:35px; width:140px;   text-align:center;  ">
+DADOS
 </div>
 
-<div align="center" style="background:#576E5E; -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 5px; font-size:25px; clear:both; margin:2px; margin-top:0px; color:#fff; font-weigth:bold; padding:5px; padding-top:8px;  padding-bottom:8px;   ">
+</td>
+<td valign="bottom" align="left" style="padding:0px; ">
+
+
+<div align="left" onClick="aba2()"  style="background:#A2BCAB;  font-size:14px; color:#111; font-weigth:bold; padding:2px; padding-top:17px;  padding-bottom:0px;   margin:0px;  
+border-top-right-radius: 15px;
+-moz-border-radius-topright: 15px;
+-webkit-border-top-right-radius: 15px; 
+border-top-left-radius: 15px;
+-moz-border-radius-topleft: 15px;
+-webkit-border-top-left-radius: 15px; 
+ height:30px; width:110px;   text-align:center; cursor:pointer; ">
+<b>DOWNLOADS</b>
+</div>
+
+</td>
+</tr>
+</table>
+</div>
+
+<div style="clear:both; ">
+<iframe id="ifrBrowser" name="ifrBrowser" width="100%" height="400"  marginheight="0" marginwidth="0" frameborder="0" scrolling="auto" class="ifrBrowser" ></iframe>
+</div>
+
+
+
+
+</div>
+<!-- fim aba 1  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- inicio aba 2  -->
+<div id="aba2" style="display:none;" >
+
+<div  style="clear:both; margin-top:5px; ">
+<table border="0" cellpadding="0" cellspacing="0" style="height:55px;  ">
+<tr>
+
+<td valign="bottom" align="left" style="padding:0px; ">
+
+
+<div align="left" onClick="aba1()"  style="background:#A2BCAB;  font-size:14px; color:#111; font-weigth:bold; padding:2px; padding-top:17px;  padding-bottom:0px;   margin:0px;  
+border-top-left-radius: 15px;
+-moz-border-radius-topleft: 15px;
+-webkit-border-top-left-radius: 15px; 
+border-top-right-radius: 15px;
+-moz-border-radius-topright: 15px;
+-webkit-border-top-right-radius: 15px; 
+ height:30px; width:100px;   text-align:center;  cursor:pointer; ">
+<b>DADOS</b>
+</div>
+
+</td>
+
+<td valign="bottom" align="left" style="padding:0px; width:150px;   ">
+
+<div align="left"   style="background:#5F8D6E; font-size:16px;  color:#fff; font-weigth:bold; padding:2px; padding-top:27px; padding-bottom:0px;   margin:0px; 
+border-top-left-radius: 15px;
+-moz-border-radius-topleft: 15px;
+-webkit-border-top-left-radius: 15px; 
+border-top-right-radius: 15px;
+-moz-border-radius-topright: 15px;
+-webkit-border-top-right-radius: 15px; 
+ height:35px; width:150px;   text-align:center;  ">
 DOWNLOADS
 </div>
 
+</td>
+</tr>
+</table>
+</div>
 
 
-<div align="center" style="background:#D3E3D8;  clear:both; margin:2px; margin-top:0px; color:#444; padding:5px; font-size:13px; line-height:12px; text-transform: none; font-height:none;   ">
 
-Abaixo você pode baixar seus exames e laudos para o seu celular. Serão copiados para uma pasta chamada RadioNorth (no cartão de memória ou no armazenamento interno)
 
+
+<div align="center" style="clear:both;  background:#D3E3D8;  margin:2px; margin-top:0px; color:#111; padding:5px; font-size:15px; line-height:12px; text-transform: none; font-height:none;   ">
+Abaixo você pode baixar seus exames e laudos para o celular. Serão copiados para uma pasta chamada RadioNorth.
 </div>
 
 
@@ -179,28 +286,27 @@ Abaixo você pode baixar seus exames e laudos para o seu celular. Serão copiados 
 
 
 <div id="divDownloads" style=" background:#D3E3D8; padding:5px; padding-bottom:0px; text-transform: none; clear:both; margin-bottom:0px;">
-
 </div>
-
 
 <button id="bt_downloads"  class="botoes2" style="background-color:#63886F; color:#ffffff !important; font-size:20px; padding:5px;  padding-top:10px; padding-bottom:10px; margin-top:0px; display:none; " >
 Exibir mais pedidos
 </button>
 
-<!--
-<input type="button"  value="Exibir mais pedidos" onClick="downloads()" class="botoes" style="background-color:#63886F; filter:Alpha(Opacity=80);opacity:.8; color:#fff;" >
-
-
--->
 
 </div>
 
 
+</div>
+<!-- fim aba 2  -->
 
 
 
-      </div>
 
+
+
+
+</div>
+<!-- fim div conteudo  -->
 
 
 
@@ -230,7 +336,7 @@ Exibir mais pedidos
 
 
 <script type="text/javascript">
-/*
+///*
 $("#bt_logar").click(function(){
 logar();
 });
@@ -241,5 +347,5 @@ downloads();
 });
 
 onInit();
-*/
+//*/
 </script>

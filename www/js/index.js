@@ -12,6 +12,9 @@ ultimoPedido = '';
 totalPedidos = '';
 vezPedidos = 1;
 qtosPedidosTem = 0;
+altTela = parseInt( screen.height ) ;
+
+
 
 document.addEventListener("deviceready", onDeviceReady, false); 
 
@@ -26,7 +29,7 @@ serial = device.serial;
 
 
 
-// /*
+/*
 $("#bt_logar").click(function(){
 logar();
 });
@@ -183,6 +186,16 @@ success: function(retorno){
 
 
 
+function aba1(){
+$("#aba2").hide();
+$("#aba1").show();
+}
+
+function aba2(){
+$("#aba1").hide();
+$("#aba2").show();
+}
+
 
 function telaLogin(){
 
@@ -190,6 +203,11 @@ $("#divConteudo").hide();
 $("#divLogar").show();
 fechaBrowser();
 LimpaDownloads();
+
+if( altTela != '' && altTela > 300 ){
+var h_ifr = altTela - 100;
+document.getElementById('ifrBrowser').style.height = h_ifr + 'px';
+}
 
 }
 
@@ -201,6 +219,7 @@ abreBrowser();
 downloads();
 $("#divConteudo").show();
 $("#divLogar").hide();
+aba1();
 
 }
 

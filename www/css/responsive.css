@@ -1,115 +1,41 @@
 
 
-/*abaixo de 800px*/
-@media only screen and (max-width: 799px) {
-
-
-
-.cabtd1{
- width:180px; 
-text-align:left;
-padding-left:2px;
-height:45px;
-border-right:1px solid #ccc;
-}
-
-.cabtd2{
- width:80px; 
-text-align:left;
-padding-left:10px;
-padding-top:10px;
-height:39px;
-font-size:14px; 
-padding-bottom:0px;
+.ifrBrowser{
+width:100%;
+ height:350px; 
 }
 
 
 
-.cabtd3{
-padding:2px;
-padding-top:4px;
-margin-left:0px;
-clear:both;
-border-top:1px solid #ccc;
-text-align:center;
- width:98%;
+/* de 1024  pra cima */
+@media only screen and (min-height: 851px) {
+
+.ifrBrowser{
+ height:950px; 
 }
 
-.logo_cab{
-width:170px;
-height:auto;
 }
 
 
 
 
+/* 800  */
+@media only screen and (max-height: 850px) and (min-height: 701px) {
 
-
-
-
-
-.logtd{
-padding-left:4px;
-padding-top:20px;
+.ifrBrowser{
+ height:750px; 
 }
 
-
-.paddpgint{
-padding:5px; padding-top:15px;
-}
-
-
-#gridPed li{
-min-height:50px;
-}
-
-#gridPed .gridPedCel1{
-width:17%; 
-}
-
-#gridPed .gridPedCel2{
-width:60%;  
-}
-
-#gridPed .gridPedCel3{
-width:15%; 
-}
-
-.gridPedServTd{
-padding:2px; 
-}
-
-#divPedTokQr{
-display:none;
-}
-
-.pedlauVis{
-/*display:none;*/
-}
-.gridPedServTd{
-padding-bottom:40px; 
-}
-
-
-.tit {
-font-size: 14px;
-}
-
-.padlat {
-padding-left:4px;
 }
 
 
 
-.lispedBoxPed{
-width:280px; float:left; padding:4px; margin-right:0px;  -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;
-}
 
+/* 650  */
+@media only screen and (max-height: 700px) and (min-height: 551px) {
 
-.lispacBox{
-width:280px; float:left; padding:4px; margin-right:0px;  -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;
-}
-
+.ifrBrowser{
+ height:580px; 
 
 }
 
@@ -117,30 +43,25 @@ width:280px; float:left; padding:4px; margin-right:0px;  -webkit-border-radius:5
 
 
 
+/* 480  */
+@media only screen and (max-height: 550px) and (min-height: 351px) {
 
-
-/*320*/
-@media only screen and (max-width: 320px) and (min-width: 300px) {
-
-.divPedServImg{
-width:280px; margin-right:0px;
+.ifrBrowser{
+ height:430px; 
 }
 
 }
 
 
 
-/*minimo*/
-@media only screen and (max-width: 240px) {
+/* 320 pra baixo */
+@media only screen and (max-height: 350px) {
 
+.ifrBrowser{
+ height:270px; 
+}
 
-.cabtd2{
- width:80px; 
 }
 
 
-
-}
-
-
-	
+/* 320 480 800 1024 */	
