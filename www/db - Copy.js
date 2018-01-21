@@ -13,8 +13,9 @@ function onInit(){
 //alert('chamou init ');
 
 
-var conn = conexao();
-//var conn = navigator.connection.type;
+//var conn = conexao();
+//var conn = 'teste';
+var conn = navigator.connection.type;
 if( conn == 'none' || conn == 'NONE' ){ //conn
 
 alert('O aplicativo nao detectou conexao com internet.');
@@ -241,7 +242,7 @@ function onCreateDB( token, nome, tipo ){
 
 function checaLogin(){
 
-//alert('chamou checaLogin ');
+alert('chamou checaLogin ');
 
     var query = "SELECT * FROM usuario order by id desc limit 1 ;";
     try {
@@ -270,18 +271,21 @@ function checaLogin(){
 					
 					}
 					
-					//alert('tokenLogado: ' + tokenLogado + ', idLogado: ' + idLogado);               
+					//
+alert('tokenLogado: ' + tokenLogado + ', idLogado: ' + idLogado);               
 					
 					
 					if( tokenLogado == '' ){
 					
-					//alert(' teste 1 ' ); 
+					//
+alert(' teste 1 ' ); 
 					telaLogin();
 					
 					} else {
 					
-					//alert(' teste 2 ' ); 
-					telaConteudo();
+					//
+alert(' teste 2 ' ); 
+					//telaConteudo();
 					
 					}
 

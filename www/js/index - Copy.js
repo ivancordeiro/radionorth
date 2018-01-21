@@ -1,5 +1,6 @@
 
-baseUrl = 'http://radionorth.com.br/sistema/';
+//baseUrl = 'http://radionorth.com.br/sistema/';
+baseUrl = 'http://ivanprogramador.com.br/teste/hadaya/';
 baseCliente = 'cliente/';
 baseArquivos = 'arquivos/';
 baseLaudos = 'pdf/';
@@ -17,6 +18,7 @@ altTela = parseInt( screen.height ) ;
 
 
 document.addEventListener("deviceready", onDeviceReady, false); 
+
 
 
 function onDeviceReady() {
@@ -58,8 +60,10 @@ onInit();
 
 
 function atualizar(){
+LimpaDownloads();
 checaLogin();
 }
+
 
 
 
@@ -81,7 +85,6 @@ if( conn == 'none' || conn == 'NONE' ){ //conn
 alert('O aplicativo nao detectou conexao com internet.');
 
 } else {//conn
-
 
 
 var logValidou = 's';
@@ -168,10 +171,12 @@ complete: function(){
 
 
 
+
 }//conn
 
 
 }
+
 
 
 
@@ -210,10 +215,14 @@ success: function(retorno){
 
 
 
+
+
+
 function aba1(){
 $("#aba2").hide();
 $("#aba1").show();
 }
+
 
 function aba2(){
 $("#aba1").hide();
@@ -221,17 +230,16 @@ $("#aba2").show();
 }
 
 
+
+
 function telaLogin(){
 
-$("#divConteudo").hide();
-$("#divLogar").show();
-fechaBrowser();
-LimpaDownloads();
+alert('chamou telaLogin');
 
-if( altTela != '' && altTela > 300 ){
-var h_ifr = altTela - 100;
-document.getElementById('ifrBrowser').style.height = h_ifr + 'px';
-}
+//$("#divConteudo").hide();
+//$("#divLogar").show();
+//fechaBrowser();
+//LimpaDownloads(); 
 
 }
 
@@ -245,18 +253,49 @@ $("#divConteudo").show();
 $("#divLogar").hide();
 aba1();
 
+if( altTela != '' &&  altTela != 'undefined'  altTela != null  && altTela > 300 ){
+var h_ifr = altTela - 50;
+document.getElementById('ifrBrowser').style.height = h_ifr + 'px';
+}
+
 }
 
 
 
+
 function LimpaDownloads(){
+ultimoPedido = '';
+totalPedidos = '';
+vezPedidos = 1;
+qtosPedidosTem = 0;
 document.getElementById('divDownloads').innerHTML = '';
 }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 function downloads(){
+
+var conn = conexao();
+if( conn == 'none' || conn == 'NONE' ){ //conn
+
+alert('O aplicativo nao detectou conexao com internet.');
+
+} else {//conn
+
+
 
 //alert('logando');
 
@@ -381,7 +420,18 @@ complete: function(){
 });
 
 
+
+
+
+}//conn
+
+
 }
+
+
+
+
+
 
 
 
@@ -390,10 +440,19 @@ complete: function(){
 
 
 function abreBrowser(){
+var conn = conexao();
+if( conn == 'none' || conn == 'NONE' ){ //conn
+alert('O aplicativo nao detectou conexao com internet.');
+} else {//conn
+
 var urlBrow = baseUrl + baseCliente + 'lis_pedidos.php?app=s&tokenUsu=' + tokenLogado  + '&tipoUsu=' + tipoLogado ;
 //alert( 'urlBrow: ' + urlBrow );
 ifrBrowser.location.href =  urlBrow;
+
+}//conn
 }
+
+
 
 
 function fechaBrowser(){
@@ -414,10 +473,9 @@ return networkState;
 
 
 
-function pedidos(){
-alert('pedidos');
-location.href='lis_pedidos.html';
-}
+
+
+
 
 
 
@@ -426,6 +484,15 @@ location.href='lis_pedidos.html';
 
 
 function baixarArquivo(arq,tipo,idped,token, ident){ 
+
+var conn = conexao();
+if( conn == 'none' || conn == 'NONE' ){ //conn
+
+alert('O aplicativo nao detectou conexao com internet.');
+
+} else {//conn
+
+
 
 //alert('ident: ' + ident);
 
@@ -465,7 +532,13 @@ var arquivoBX2 = 'ped' + idped + '/' + arq ;
 
 
 
+}//conn
+
 }
+
+
+
+
 
 
 
