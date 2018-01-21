@@ -29,7 +29,7 @@ serial = device.serial;
 
 
 
-//*
+/*
 $("#bt_logar").click(function(){
 logar();
 });
