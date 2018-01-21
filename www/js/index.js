@@ -8,6 +8,10 @@ tokenLogado = '';
 idLogado = '';
 nomeLogado = '';
 tipoLogado = '';
+ultimoPedido = '';
+totalPedidos = '';
+vezPedidos = 1;
+qtosPedidosTem = 0;
 
 document.addEventListener("deviceready", onDeviceReady, false); 
 
@@ -103,7 +107,7 @@ function downloads(){
 
 //alert('logando');
 
-var dadosDown = "tokenUsu=" + tokenLogado + "&tipoUsu=" + tipoLogado ;
+var dadosDown = "tokenUsu=" + tokenLogado + "&tipoUsu=" + tipoLogado + "&ultimoPedido=" + ultimoPedido  + "&totalPedidos=" + totalPedidos + "&vezPedidos=" + vezPedidos;
 //
 alert('dados: ' + dadosDown);
 	
@@ -118,6 +122,11 @@ crossDomain: true,
 success: function(retorno){ 
 
 //alert(retorno);
+
+ultimoPedido = ultimo; 
+totalPedidos =  retorno['total'] ;
+vezPedidos = vezPedidos + 1;
+qtosPedidosTem = qtosPedidosTem + parseInt( retorno['qtosPedidosVeio'] ) ;
 
 
 var html = '';
