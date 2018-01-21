@@ -293,7 +293,7 @@ var arquivo = retorno['pedidos'][pedido]['arquivos'][arq]['arquivo'];
 var dataarq = retorno['pedidos'][pedido]['arquivos'][arq]['data'];
 var nomearq = retorno['pedidos'][pedido]['arquivos'][arq]['nome'];
 
-var identBtn = 'bt_arq_' + idpedido + '_' + arquivo;
+var identBtn = 'bt_arq_' + idpedido + '_' + arq  ;
 alert('identBtn: ' + identBtn);
 
 html += '<div style="clear:both; border-bottom:1px solid #576E5E; padding-bottom:5px; ">';
@@ -402,6 +402,8 @@ location.href='lis_pedidos.html';
 
 
 function baixarArquivo(arq,tipo,idped,token, ident){ 
+
+alert('ident: ' + ident);
 
 //alert('chamou funcao dowload');
 $("#" + ident).val( 'Baixando...' );
