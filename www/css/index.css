@@ -114,16 +114,6 @@ padding:3px;
 -webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 8px;
 }
 
-select {
-background-color:#fff ;
-border-right:2px solid #444;
-border-bottom:2px solid #444;
-border-top:1px solid #999;
-border-left:1px solid #999;
-height:30px;
-padding:3px;
--webkit-border-radius:5px;-moz-border-radius:5px; border-radius: 8px;
-}
 
 .radio] {
 height:40px;
@@ -135,16 +125,6 @@ margin: 0px;
 }
 
 
-a {
-color: #000099;
-text-decoration: underline;
-}
-
-
-
-a:hover {
-text-decoration: none;
-}
 
 
 
@@ -219,242 +199,17 @@ background-color: #63886F;
 }
 
 
-
-
-.cab_grid{
- background:#000;
- color:#fff;
- height: 22px;
- padding: 5px;
-}
-
 .cel_grid{
  padding: 5px;
 }
 
 
-.itemcancelado{
-filter:opacity(alpha=30);-moz-opacity:0.3;  opacity:0.3;
- background:#999;
+
+.botoes2{
+filter:Alpha(Opacity=80);opacity:.8;
 }
 
-.cabtd1{
-padding:2px; padding-left:10px; height:70px; width:200px; float:left;
-}
-
-.cabtd2{
-padding:2px; padding-left:10px;float:left;
-padding-top:20px;
-font-size:18px; color:#466B53; font-family:Arial;
-}
-
-.cabtd3{
-padding:2px; padding-left:10px;float:left;
-padding-top:20px;
-text-align:right;
-margin-left:50px;
-}
-
-.logo_cab{
-height:55px;
-width:auto;
-}
-
-.logtd{
-padding-top:20px; padding-left:13px; padding-bottom:13px; background:#D2E2D8;
-}
-
-.paddpgint{
-padding:20px; background:#fff;
-}
-
-
-#gridPed{
-width:100%; list-style: none; margin:0px; padding:0px; 
-}
-
-#gridPed li{
-position: relative; float: left; padding:3px; padding-top:5px; padding-bottom:5px;  margin:0px; text-align:left; border-right:1px solid #ccc; border-bottom:1px solid #ccc;
-}
-
-#div_lembrar_senha1{
- width:310px; background:#D2E2D8;
-}
-#div_lembrar_senha{
- width:310px; background:#D2E2D8;
-}
-
-#gridPed .first{
-border-left:1px solid #ccc;
-}
-
-#gridPed .gridPedCel1{
-width:10%; clear:both;
-}
-
-#gridPed .gridPedCel2{
-width:78%;  
-}
-
-#gridPed .gridPedCel3{
-width:8%; 
-}
-
-#gridPed .gridPedCab{
-background:#D2E2D8; font-weight:bold; border-right:1px solid #fff;
-}
-
-
-
-
-
-
-.gridPedServTd{
-padding:10px; padding-bottom:20px; border:1px solid #ccc;
-}
-
-#gridPedServ{
-width:100%; list-style: none; margin:0px; padding:0px;  
-}
-
-#gridPedServ li{
-position: relative; float: left; padding:3px; padding-top:5px; padding-bottom:5px;  margin:0px; text-align:left;
-}
-
-
-#gridPedServ .gridPedServCel1{
-width:99%; 
-}
-
-#gridPedServ .gridPedServCel2{
-width:99%;
-}
-
-#gridPedServ .gridPedServCel3{
-width:99%; 
-}
-
-#gridPedServ .gridPedServCab{
-background:#D2E2D8;  border-right:1px solid #fff;height: 22px;
-}
-
-#divPedTokQr{
-clear:both;
-}
-
-.divPedServImg{
-padding:3px; padding-bottom:8px; width:200px; float:left; margin-right:10px; margin-bottom:10px; border: 1px solid #ccc; text-align:center;
-}
-
-.pedlauVisbaix{
-text-decoration:none; font-weight:bold; font-size:20px;
-}
-
-
-.tit {
-
-padding:0px;
-height: 26px;
-color: #00;
-font-size: 18px;
-font-weight: bold;
-text-transform: uppercase;
-padding-top:5px;
-}
-
-
-.padlat {
-padding-left:10px;
-}
-
-.lispedBoxPed{
-width:300px; float:left; padding:7px; margin-right:10px; margin-bottom:20px; border: 1px solid #ccc; -webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;
-}
-
-
-.lispedPacLinha{
-clear:both;
-}
-
-.lispedPac{
-font-weight:bold; float:left;  font-size:11px;
-}
-.lispedPac2{
-font-weight:normal;
-font-size:11px;
-}
-
-.lispedDent{
-font-weight:bold; float:left; font-size:11px;
-}
-.lispedDent2{
-font-weight:normal;
-font-size:11px;
-}
-
-.lispedData{
-font-weight:bold; float:left; font-size:11px;
-}
-.lispedData2{
-font-weight:normal;
-font-size:11px;
-}
-
-.lispedSta{
-font-weight:bold; float:left; font-size:12px;  height:30px; padding-top:5px;
-}
-.lispedSta2{
-height:30px;
-}
-
-
-.lispedDet{
-clear:both;
-}
-
-
-
-
-
-.lispacBox{
-width:300px; float:left; padding:7px; margin-right:10px; margin-bottom:20px; border: 1px solid #ccc; -webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;
-}
-
-
-.lispacLinha{
-clear:both;
-}
-
-.lispacPac{
-font-weight:bold; float:left;  font-size:11px;
-}
-.lispacPac2{
-font-weight:normal;
-font-size:11px;
-}
-
-
-.lispacEmail{
-font-weight:bold; float:left;  font-size:11px;
-}
-.lispacEmail2{
-font-weight:normal;
-font-size:11px;
-}
-
-.lispacTel{
-font-weight:bold; float:left;  font-size:11px;
-}
-.lispacTel2{
-font-weight:normal;
-font-size:11px;
-}
-
-
-.lispacWhat{
-font-weight:bold; float:left;  font-size:11px;
-}
-.lispacWhat2{
-font-weight:normal;
-font-size:11px;
+.botoes2:hover{
+ filter:Alpha(Opacity=60);opacity:.6;
+box-shadow: #555 2px 2px 2px; /*cor, afast dir, afast bottom, esmaec*/
 }

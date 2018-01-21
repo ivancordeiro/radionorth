@@ -3,7 +3,9 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <!-- <meta charset="utf-8" /> 
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> -->
+    <meta charset="iso-8859-1" /> 
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
@@ -12,7 +14,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/index.css?v=3" />
 <link href="css/responsive.css?v=1" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" /> 
+ <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />  
 
  <title>Radio North</title>
 
@@ -30,7 +32,7 @@
 
 
 
-<div id="divLogar" align="left" style="clear:both; padding:10px; ">
+<div id="divLogar" align="left" style="clear:both; padding:10px; display:none; ">
 
 
 
@@ -52,12 +54,12 @@
 
 <div >
 <b>Login:</b> <br />
-<input type="text" name="login" id="login" class="input_gr" value="" placeholder="Login" >
+<input type="text" name="login" id="login" class="input_gr" style="height:45px;" value="" placeholder="Digite se login" required >
 </div>
 
 <div >
 <b>Senha:</b> <br />
-<input type="password" name="senha" id="senha" class="input_gr" placeholder="Senha"  >
+<input type="password" name="senha" id="senha" class="input_gr" style="height:45px;"  placeholder="Digite sua senha" required  >
 </div>
 
 
@@ -66,12 +68,12 @@
 </div>
 
 <div style="clear:both; padding-top:10px;">
-  <div style="float:left; width:52px; height:45px;"> <input type="radio" name="tipo" id="tipo" value="cli" style="height:40px; width:40px;"  > </div> 
+  <div style="float:left; width:52px; height:45px;"> <input type="radio" name="tipo" id="tipo" value="cli" style="height:40px; width:40px;" required  > </div> 
    <div style="float:left; padding-top:7px;">Paciente </div>
 </div>
 
 <div style="clear:both; padding-top:5px;">
-  <div style="float:left; width:52px; height:42px;"><input type="radio" name="tipo" id="tipo" value="pro"  style="height:40px; width:40px;" ></div>
+  <div style="float:left; width:52px; height:42px;"><input type="radio" name="tipo" id="tipo" value="pro"  style="height:40px; width:40px;" required ></div>
   <div style="float:left;  padding-top:7px;">Profissional / Dentista </div>
 </div>
 
@@ -81,7 +83,12 @@
 
 
 <div style="clear:both; padding-top:1px;">
-<input type="button"  value="Entrar" onClick="logar()" class="botoes" >
+<!-- <input type="button"  value="Entrar" id="bt_logar" class="botoes"  style="background-color:#63886F; color:#ffffff !important; filter:Alpha(Opacity=80);opacity:.8; " > -->
+
+<button id="bt_logar"  class="botoes2" style="background-color:#63886F; color:#ffffff !important; font-size:20px; padding-top:10px; padding-bottom:10px; " >
+ENTRAR
+</button>
+
 </div>
 
 </form>
@@ -113,27 +120,75 @@
 
 
 
+<div  id="divConteudo" style=" display:none;  padding-top:0px !important;">
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%; background:#000;">
+<tr>
+<td valign="top" align="left" style="padding:2px; width:50%; ">
+<div onClick="deslogar()"  
+style="float:left; color:#fff; font-size:14px; width:99%; cursor: pointer; background:#576E5E; margin:1px ; 
+ height:20px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:2px; ">
+DESLOGAR
+</div>
+</td>
+<td valign="top" align="right" style="padding:2px; padding-left:0px; width:50%; ">
+<div onClick="fechar()"  
+style="float:left; color:#fff; font-size:14px; width:99%;  cursor: pointer; background:#576E5E; margin:1px ; 
+height:20px; -webkit-border-radius:2px;-moz-border-radius:2px; border-radius: 2px; text-align:center; padding-top:2px; ">
+FECHAR O APP
+</div>
+</td>
+</tr>
+</table>
 
 
-      <div  id="divConteudo" style=" display:none;">
 
-<iframe id="ifrBrowser" name="ifrBrowser" width="100%" height="350" marginheight="0" marginwidth="0" frameborder="1"></iframe>
-<br>
 
-<div style="background:#63886F; clear:both; margin-top:10px; color:#fff; font-weigth:bold; padding:5px;  ">
-Arquivos para baixar:
+
+
+
+<div style="clear:both; ">
+<iframe id="ifrBrowser" name="ifrBrowser" width="100%" height="350" marginheight="0" marginwidth="0" frameborder="0" scrolling="auto"></iframe>
 </div>
 
-<div id="divDownloads">
+<div align="center" style="background:#576E5E; -webkit-border-radius:3px;-moz-border-radius:3px; border-radius: 3px; font-size:22px; clear:both; margin:2px; margin-top:0px; color:#fff; font-weigth:bold; padding:7px; line-height:16px; ">
+DOWNLOADS<br>
+
+<span  style=" font-size:12px; line-height:12px; text-transform: none; font-height:none;  ">
+Abaixo você pode baixar seus exames e laudos para o seu celular. Serão copiados para uma pasta chamada RadioNorth (no cartão de memória ou no armazenamento interno)
+</span>
 
 </div>
 
-<div >
-<input type="button"  value="Baixar mais" onClick="downloads()" class="botoes" style="background:red;width:60px;" >
+
+
+
+<div id="divDownloads" style=" background:#fff; padding:5px; padding-bottom:0px; text-transform: none;">
+
 </div>
+
+
+<div style=" background:#fff; padding:5px; padding-top:0px; padding-bottom:5px;">
+
+<button id="bt_downloads"  class="botoes2" style="background-color:#63886F; color:#ffffff !important; font-size:20px; padding:5px;  padding-top:10px; padding-bottom:10px; display:none; " >
+Exibir mais pedidos
+</button>
+
+<!--
+<input type="button"  value="Exibir mais pedidos" onClick="downloads()" class="botoes" style="background-color:#63886F; filter:Alpha(Opacity=80);opacity:.8; color:#fff;" >
+
+
+-->
+
+</div>
+
+
+
 
 
       </div>
+
+
 
 
 
@@ -159,5 +214,5 @@ Arquivos para baixar:
 </html>
 
     <script type="text/javascript">
-        onInit();
+        //onInit();
     </script>

@@ -108,7 +108,6 @@ function onUpdateDB( id, nome, token, tipo ){
                     }
                     else {
                         //updateStatusDB("Update realizado:" + results.rowsAffected);
-                        //checaLogin();
                     }
                 }, errorHandlerDB);
             });
@@ -133,7 +132,6 @@ function onDeleteDB(id){
                 }
                 else {
                     //updateStatusDB("Linhas deletadas:" + results.rowsAffected);
-                    //checaLogin();
                 }
             }, errorHandlerDB);
         });
@@ -152,6 +150,7 @@ function onDeleteGeralDB(){
     try {
         localDB.transaction(function(transaction){
             transaction.executeSql(query, [], nullDataHandler, errorHandlerDB);
+            //alert('deletou dados antigos em off');
         });
     } 
     catch (e) {
@@ -177,13 +176,13 @@ function onCreateDB( token, nome, tipo ){
                     }
                     else {
                         //updateStatusDB("Inserção realizada, linha id: " + results.insertId);
-                         checaLogin();
+                        checaLogin();
                     }
                 }, errorHandlerDB);
             });
         } 
         catch (e) {
-            updateStatusDB("Erro: INSERT não realizado " + e + ".");
+            updateStatusDB("Erro: INSERT LOGIN OFF nao realizado " + e + ".");
         }
 
     }
@@ -196,83 +195,49 @@ function onCreateDB( token, nome, tipo ){
 
 function checaLogin(){
 
-	//Remove as linhas existentes para inserção das novas
-    /*var dataRows = document.getElementById("itemData").getElementsByClassName("data");
-	
-    while (dataRows.length > 0) {
-        row = dataRows[0];
-        document.getElementById("itemData").removeChild(row);
-    };
-*/
-    
-	//Realiza a leitura no banco e cria novas linhas na tabela.
     var query = "SELECT * FROM usuario order by id desc limit 1 ;";
     try {
         localDB.transaction(function(transaction){
         
             transaction.executeSql(query, [], function(transaction, results){
-                var qtaslinhas = results.rows.length;
+            var qtaslinhas = results.rows.length;
 
-                //
-//alert('qtaslinhas: ' + qtaslinhas);
+					
+					//alert('qtaslinhas: ' + qtaslinhas);
+					
+					if( qtaslinhas > 0 ){
+					
+					var row = results.rows.item(0);
+					tokenLogado = row['token'];
+					idLogado = row['id'];
+					nomeLogado = row['nome'];
+					tipoLogado = row['tipo'];
+					
+					} else {
+					
+					tokenLogado = '';
+					idLogado = '';
+					nomeLogado = '';
+					tipoLogado = '';
+					
+					}
+					
+					//alert('tokenLogado: ' + tokenLogado + ', idLogado: ' + idLogado);               
+					
+					
+					if( tokenLogado == '' ){
+					
+					//alert(' teste 1 ' ); 
+					telaLogin();
+					
+					} else {
+					
+					//alert(' teste 2 ' ); 
+					telaConteudo();
+					
+					}
 
-if( qtaslinhas > 0 ){
 
-var row = results.rows.item(0);
-tokenLogado = row['token'];
-idLogado = row['id'];
-nomeLogado = row['nome'];
-tipoLogado = row['tipo'];
-
-} else {
-
-tokenLogado = '';
-idLogado = '';
-nomeLogado = '';
-tipoLogado = '';
-
-}
-
-//alert('tokenLogado: ' + tokenLogado + ', idLogado: ' + idLogado);               
-
-if( tokenLogado == '' ){
-
-//alert(' teste 1 ' ); 
-
-//document.getElementById('divConteudo').style.display = 'none';
-//document.getElementById('divLogar').style.display = 'block';
-
-$("#divConteudo").hide();
-$("#divLogar").show();
-fechaBrowser();
-logar();
-
-} else {
-
-//alert(' teste 2 ' ); 
-
-abreBrowser();
-downloads();
-$("#divConteudo").show();
-$("#divLogar").hide();
-
-}
-
-/*
-                for (var i = 0; i < results.rows.length; i++) {
-                
-                    var row = results.rows.item(i);
-                    var li = document.createElement("li");
-					li.setAttribute("id", row['id']);
-                    li.setAttribute("class", "data");
-                    li.setAttribute("onclick", "onSelect(this)");
-                    
-                    var liText = document.createTextNode( row['nome'] + " , token: "+ row['token'] + ", tipo: " + row['tipo'] + ", id: " + row['id']   );
-                    li.appendChild(liText);
-                    
-                    document.getElementById("itemData").appendChild(li);
-                }
-*/
 
             }, function(transaction, error){
                 updateStatusDB("Erro: " + error.code + "<br>Mensagem: " + error.message);
@@ -283,6 +248,7 @@ $("#divLogar").hide();
         updateStatusDB("Error: SELECT não realizado " + e + ".");
     }
 }
+
 
 
 
