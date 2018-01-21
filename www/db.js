@@ -8,7 +8,8 @@ function onInit(){
 
 var conn = conexao();
 if( conn == 'none' || conn == 'NONE' ){ //a
-alert('O app nao detectou conexao com internet');
+alert('O aplicativo nao detectou conexao com internet.');
+fechar();
 } else {//a
 
 
